@@ -1,0 +1,81 @@
+<link rel="import" href="../polymer/polymer.html"> 
+<link rel="import" href="../th-theme/th-theme.html"> 
+<link rel="import" href="../th-animated/th-animated.html"> 
+
+<!--
+A Thelma component providing solution to no problem in particular.
+
+##### Example
+
+    <pd-timeline></pd-timeline>
+
+@element pd-timeline
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://pauldd91.github.io/pd-timeline
+-->
+
+<polymer-element name="pd-timeline" extends="th-animated"  attributes="author fancy">
+  <template>
+    <core-style ref="theme"></core-style>
+    <link rel="stylesheet" href="timeline.css">
+    <style>
+      #timeline {
+        height: 600px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+    <div class="th-container">
+    <div id="mytimeline"></div>
+    </div>
+    <content></content>
+    
+  </template>
+  <script type="text/javascript" src="storyjs-embed.js"></script>
+  <script>
+    Polymer('pd-timeline', {
+      /**
+       * The `author` attribute sets an initial author
+       *
+       * @attribute author
+       * @type string
+       * @default 'Nisha Batra'
+       */
+      author: 'Paul Dariye',
+
+      /**
+       * `fancy` is a property that does something fancy.
+       *
+       * @property fancy
+       * @type bool
+       * @default false
+       */
+       fancy: false,
+
+      ready: function () {
+        // Ready is a lifecycle callback.
+        // You can do setup work in here.
+        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
+         
+        var timelineEl = this.$.mytimeline;
+        createStoryJS({ type: 'timeline', width: '100%', height: '100%', source: 'example.json', embed_id: timelineEl, debug: true });
+
+       },
+      animate: function(){
+        // Animate is a meth<Up>od inherited from the 'th-animated' Thelma component.
+        // You can include code that animates the element here.
+        // Along with it come two attributes, which can be set to time the animation:
+        //   'animateOnInit': accepts a boolean value; if true, animate() will be called when the component is initialized.
+        //   'animateAfter':  accepts a value representing number of milleseconds; if set, animate() will be called 
+        //                    X milleseconds after the component is initialized. 
+      },
+      reset: function(){
+        // Reset is a method inherited from the 'th-animated' Thelma component.
+        // You can include code that takes the component back to the pre-animated state.
+
+       }
+    });
+  </script>
+</polymer-element>
