@@ -18,7 +18,9 @@ A Thelma component providing solution to no problem in particular.
 <polymer-element name="pd-timeline" extends="th-animated"  attributes="author fancy">
   <template>
     <core-style ref="theme"></core-style>
+    
     <link rel="stylesheet" href="timeline.css">
+     <link rel="stylesheet" href="pd-timeline.css">
     <style>
       #timeline {
         height: 600px;
@@ -54,13 +56,14 @@ A Thelma component providing solution to no problem in particular.
        */
        fancy: false,
 
-      ready: function () {
+      domReady: function () {
         // Ready is a lifecycle callback.
         // You can do setup work in here.
         // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
          
         var timelineEl = this.$.mytimeline;
-        createStoryJS({ type: 'timeline', width: '100%', height: '100%', source: 'example.json', embed_id: timelineEl, debug: true });
+       
+        createStoryJS({ type: 'timeline', width: '800', height: '600', source: '../pd-timeline/example.json', embed_id: timelineEl, debug: true });
 
        },
       animate: function(){
